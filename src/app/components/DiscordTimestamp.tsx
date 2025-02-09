@@ -2,9 +2,7 @@
 
 import React from 'react';
 
-interface DiscordTimestampProps {}
-
-const DiscordTimestamp: React.FC<DiscordTimestampProps> = () => {
+const DiscordTimestamp = () => {
   const [selectedDate, setSelectedDate] = React.useState(new Date().toISOString().slice(0, 16));
   const [date, setDate] = React.useState(new Date());
   const [timestamp, setTimestamp] = React.useState('');
@@ -98,8 +96,8 @@ const DiscordTimestamp: React.FC<DiscordTimestampProps> = () => {
           <h2 className="text-xl font-semibold text-gray-800 mb-4">How to Use</h2>
           <ol className="space-y-2 text-gray-700">
             <li>1. Select your desired date and time in 24-hour format</li>
-            <li>2. Click the "Apply" button to generate timestamps</li>
-            <li>3. Click the "Copy" button next to your preferred format</li>
+            <li>2. Click the &quot;Apply&quot; button to generate timestamps</li>
+            <li>3. Click the &quot;Copy&quot; button next to your preferred format</li>
             <li>4. Paste the copied timestamp into your Discord message</li>
             <li>5. Send your message and see the formatted timestamp!</li>
           </ol>
