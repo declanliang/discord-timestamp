@@ -48,7 +48,7 @@ export default function USHolidays2025Page() {
               <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">1</div>
               <div>
                 <h3 className="font-medium">Perfect for International Communities</h3>
-                <p className="text-gray-600">Discord timestamps automatically adjust to each user's local time zone.</p>
+                <p className="text-gray-600">Discord timestamps automatically adjust to each user&apos;s local time zone.</p>
               </div>
             </div>
             <div className="flex gap-3">

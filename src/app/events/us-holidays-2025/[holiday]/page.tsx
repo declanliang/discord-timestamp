@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { US_HOLIDAYS_2025, Holiday } from '../../../data/us-holidays-2025';
+import { US_HOLIDAYS_2025 } from '../../../data/us-holidays-2025';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
@@ -82,7 +82,7 @@ export default function HolidayPage({ params }: PageProps) {
           <h2 className="text-2xl font-semibold">Discord Timestamps</h2>
           <p className="text-gray-600">
             Copy these Discord timestamp formats to use in your server. Discord will automatically
-            convert these to each user's local time zone.
+            convert these to each user&apos;s local time zone.
           </p>
           
           <div className="grid gap-4">
@@ -111,7 +111,7 @@ export default function HolidayPage({ params }: PageProps) {
           <ul className="list-disc pl-5 space-y-2 text-gray-600">
             <li>Use the Relative format (<code className="bg-gray-100 px-1">:R</code>) for countdowns in your announcements</li>
             <li>Include the Full Date/Time format (<code className="bg-gray-100 px-1">:F</code>) in event details</li>
-            <li>Add timestamps to your server's event channels for easy reference</li>
+            <li>Add timestamps to your server&apos;s event channels for easy reference</li>
             <li>Schedule bot reminders using these timestamps for event notifications</li>
           </ul>
         </div>
