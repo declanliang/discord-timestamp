@@ -2,12 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { US_HOLIDAYS_2025 } from '../../../data/us-holidays-2025';
 import { notFound } from 'next/navigation';
-
-interface PageProps {
-  params: {
-    holiday: string;
-  }
-}
+import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   return US_HOLIDAYS_2025.map(holiday => ({
@@ -15,7 +10,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+type Props = {
+  params: { holiday: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
@@ -32,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function HolidayPage({ params }: PageProps) {
+export default function HolidayPage({ params }: Props) {
   const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
