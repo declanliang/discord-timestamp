@@ -10,11 +10,11 @@ export async function generateStaticParams() {
   }));
 }
 
-type Props = {
-  params: { holiday: string }
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: { holiday: string } 
+}): Promise<Metadata> {
   const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
@@ -31,7 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function HolidayPage({ params }: Props) {
+export default function HolidayPage({ 
+  params 
+}: { 
+  params: { holiday: string } 
+}) {
   const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
