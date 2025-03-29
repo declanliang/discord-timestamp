@@ -11,12 +11,13 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { holiday: string };
+  params: Promise<{ holiday: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const holiday = US_HOLIDAYS_2025.find(h => h.id === props.params.holiday);
+  const resolvedParams = await props.params;
+  const holiday = US_HOLIDAYS_2025.find(h => h.id === resolvedParams.holiday);
   
   if (!holiday) {
     return {
@@ -32,8 +33,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default function HolidayPage(props: Props) {
-  const holiday = US_HOLIDAYS_2025.find(h => h.id === props.params.holiday);
+export default async function HolidayPage(props: Props) {
+  const resolvedParams = await props.params;
+  const holiday = US_HOLIDAYS_2025.find(h => h.id === resolvedParams.holiday);
   
   if (!holiday) {
     notFound();
