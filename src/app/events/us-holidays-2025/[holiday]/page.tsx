@@ -10,16 +10,12 @@ export async function generateStaticParams() {
   }));
 }
 
-type PageProps = {
-  params: Promise<{ holiday: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 export async function generateMetadata({ 
   params 
-}: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const holiday = US_HOLIDAYS_2025.find(h => h.id === resolvedParams.holiday);
+}: { 
+  params: { holiday: string } 
+}): Promise<Metadata> {
+  const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
     return {
@@ -35,11 +31,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function HolidayPage({ 
+export default function HolidayPage({ 
   params 
-}: PageProps) {
-  const resolvedParams = await params;
-  const holiday = US_HOLIDAYS_2025.find(h => h.id === resolvedParams.holiday);
+}: { 
+  params: { holiday: string } 
+}) {
+  const holiday = US_HOLIDAYS_2025.find(h => h.id === params.holiday);
   
   if (!holiday) {
     notFound();
