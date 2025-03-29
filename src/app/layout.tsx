@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   keywords: 'Discord timestamp, time format, Discord time, timezone converter, Discord event planning',
 }
 
-type Props = {
+export default function RootLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>;
-}
-
-export default async function RootLayout(props: Props) {
-  const resolvedParams = await props.params;
-  const locale = resolvedParams?.locale || 'en'
+  params?: { locale?: string };
+}) {
+  const locale = params?.locale || 'en'
   
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <LanguageSwitcher />
-        {props.children}
+        {children}
       </body>
     </html>
   )
