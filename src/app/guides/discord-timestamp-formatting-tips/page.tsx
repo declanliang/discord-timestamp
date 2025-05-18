@@ -135,9 +135,9 @@ export default function DiscordTimestampFormattingTips() {
           
           <div className="bg-gray-100 p-4 rounded-md">
             <p>```EVENT TIMES```</p>
-            <p>> Opening Ceremony: &lt;t:1693526400:F&gt;</p>
-            <p>> Main Activities: &lt;t:1693612800:F&gt;</p>
-            <p>> Closing Party: &lt;t:1693699200:F&gt;</p>
+            <p>&gt; Opening Ceremony: &lt;t:1693526400:F&gt;</p>
+            <p>&gt; Main Activities: &lt;t:1693612800:F&gt;</p>
+            <p>&gt; Closing Party: &lt;t:1693699200:F&gt;</p>
           </div>
         </div>
         
