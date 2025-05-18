@@ -22,15 +22,25 @@ export default function LanguageSwitcher() {
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === currentLocale) return;
 
-    // Determine new path
+    // Determine new path while preserving content path
     let newPath = '';
+    const pathSegments = pathname.split('/').filter(segment => segment);
+    
+    // Remove current locale from path segments if it exists
+    const contentPathSegments = pathSegments.filter(segment => 
+      !i18n.locales.includes(segment)
+    );
     
     if (newLocale === i18n.defaultLocale) {
-      // For default locale, go to root
-      newPath = '/';
+      // For default locale, use content path without locale prefix
+      newPath = contentPathSegments.length > 0 
+        ? `/${contentPathSegments.join('/')}` 
+        : '/';
     } else {
-      // For other locales, go to /locale/
-      newPath = `/${newLocale}`;
+      // For other locales, add locale prefix to content path
+      newPath = contentPathSegments.length > 0
+        ? `/${newLocale}/${contentPathSegments.join('/')}`
+        : `/${newLocale}`;
     }
     
     router.push(newPath);
