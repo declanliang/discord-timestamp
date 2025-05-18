@@ -22,37 +22,29 @@ export default function LanguageSwitcher() {
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === currentLocale) return;
 
-    // Determine new path while preserving content path
-    let newPath = '';
+    // Get the current path segments
     const pathSegments = pathname.split('/').filter(segment => segment);
     
-    // Check if the current path is already using a locale path
-    const currentLocaleIndex = pathSegments.findIndex(segment => 
-      i18n.locales.includes(segment)
-    );
-    
-    // Extract content path segments (excluding locale)
-    let contentPathSegments;
-    if (currentLocaleIndex !== -1) {
-      // Current path has a locale, remove it to get content segments
-      contentPathSegments = [...pathSegments];
-      contentPathSegments.splice(currentLocaleIndex, 1);
+    // Handle special case for default locale (English)
+    if (currentLocale === i18n.defaultLocale) {
+      // We're switching FROM English TO another language
+      if (newLocale !== i18n.defaultLocale) {
+        // Simply add the new locale before the current path
+        return router.push(`/${newLocale}${pathname}`);
+      }
     } else {
-      // Default locale (English) path doesn't have a locale prefix
-      contentPathSegments = pathSegments;
+      // We're switching FROM a non-English language
+      // First, remove the language code from the path
+      const contentPath = pathname.replace(`/${currentLocale}`, '');
+      
+      if (newLocale === i18n.defaultLocale) {
+        // Switching to English
+        return router.push(contentPath || '/');
+      } else {
+        // Switching to another non-English language
+        return router.push(`/${newLocale}${contentPath}`);
+      }
     }
-    
-    if (newLocale === i18n.defaultLocale) {
-      // For English (default locale), use path without locale prefix
-      newPath = contentPathSegments.length > 0
-        ? `/${contentPathSegments.join('/')}`
-        : '/';
-    } else {
-      // For other locales, add the locale prefix
-      newPath = `/${newLocale}${contentPathSegments.length > 0 ? '/' + contentPathSegments.join('/') : ''}`;
-    }
-    
-    router.push(newPath);
   };
 
   return (
