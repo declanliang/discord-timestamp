@@ -60,10 +60,6 @@ export default function HolidayPage({
     { key: 'R', description: 'Relative Time', example: 'in X days', code: `<t:${timestamp}:R>` },
   ];
   
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-  
   // Find next and previous holidays for navigation
   const currentIndex = US_HOLIDAYS_2025.findIndex(h => h.id === holiday.id);
   const prevHoliday = currentIndex > 0 ? US_HOLIDAYS_2025[currentIndex - 1] : null;
@@ -97,13 +93,11 @@ export default function HolidayPage({
                   <code className="text-sm text-gray-600 bg-gray-200 px-2 py-1 rounded">{format.code}</code>
                   <p className="text-sm text-gray-500">Displays as: {format.example}</p>
                 </div>
-                <button
-                  onClick={() => copyToClipboard(format.code)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
-                  aria-label={`Copy ${format.description} format`}
+                <span
+                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors cursor-pointer"
                 >
                   Copy
-                </button>
+                </span>
               </div>
             ))}
           </div>
