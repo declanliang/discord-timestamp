@@ -27,10 +27,10 @@ const navItems = {
 };
 
 const siteTitle = {
-  en: 'Discord Timestamp Generator',
-  es: 'Generador de Marcas de Tiempo Discord',
-  fr: 'Générateur d\'Horodatage Discord',
-  de: 'Discord Zeitstempel-Generator'
+  en: 'Discord Timestamp Converter',
+  es: 'Conversor de Marcas de Tiempo Discord',
+  fr: 'Convertisseur d\'Horodatage Discord',
+  de: 'Discord Zeitstempel-Konverter'
 };
 
 export default function Navbar() {

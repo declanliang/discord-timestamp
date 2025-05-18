@@ -7,9 +7,9 @@ export default function Home() {
     <main className="min-h-screen flex flex-col justify-center items-center p-6">
       <div className="max-w-4xl w-full space-y-12">
         <div className="text-center">
-          <h1 className="text-4xl font-bold">Discord Timestamp Generator</h1>
+          <h1 className="text-4xl font-bold">Discord Timestamp Converter</h1>
           <p className="mt-2 text-gray-600">
-            Generate timestamps for Discord messages that automatically display in each user&apos;s local time zone
+            Convert your local time into Discord timestamp format that automatically adjusts to each user&apos;s timezone
           </p>
         </div>
         
