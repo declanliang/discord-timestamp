@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { i18n, locales } from '../i18n';
+import { locales } from '../i18n';
 import { useEffect, useState } from 'react';
 import { getLocalizedPath, getLocaleFromPath } from '../utils/routeUtils';
 
