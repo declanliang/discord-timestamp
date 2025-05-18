@@ -1,23 +1,31 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import LanguageSwitcher from './components/LanguageSwitcher'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Discord Timestamp Converter | Simple Online Tool',
-  description: 'Convert timestamps for Discord messages with different formats. Easy to use, free online Discord timestamp converter.',
-  keywords: 'discord, timestamp, converter, discord timestamp, time format',
+  title: 'Discord Timestamp Generator | Easy Copy & Paste',
+  description: 'Generate Discord timestamps easily. Copy and paste timestamps that automatically adjust to each user\'s timezone.',
+  keywords: 'Discord timestamp, time format, Discord time, timezone converter, Discord event planning',
 }
 
 export default function RootLayout({
   children,
+  params,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
+  params?: { locale?: string };
 }) {
+  const locale = params?.locale || 'en'
+  
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang={locale}>
+      <body className={inter.className}>
+        <LanguageSwitcher />
+        {children}
+      </body>
     </html>
   )
 }
