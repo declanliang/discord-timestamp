@@ -6,11 +6,17 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   
   // Check if the pathname has a supported locale in it
-  const pathnameHasLocale = i18n.locales.some(
-    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  const pathnameIsMissingLocale = i18n.locales.every(
+    locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   )
   
-  if (pathnameHasLocale) return
+  // Skip middleware if path already has locale or is a static asset
+  if (!pathnameIsMissingLocale || 
+      pathname.startsWith('/_next') || 
+      pathname.includes('/api/') || 
+      pathname.includes('.')) {
+    return
+  }
 
   // Redirect if there is no locale
   // Get the preferred locale from the Accept-Language header, or use the default locale
@@ -32,12 +38,12 @@ export function middleware(request: NextRequest) {
     }
   }
   
-  // For default locale, don't add locale prefix
+  // For default locale, don't add locale prefix - this is the English path
   if (locale === i18n.defaultLocale) {
     return
   }
   
-  // Redirect to the preferred locale
+  // Redirect to the preferred locale for non-English users
   return NextResponse.redirect(
     new URL(`/${locale}${pathname === '/' ? '' : pathname}`, request.url)
   )
@@ -45,7 +51,10 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next, api, etc.)
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Match all paths except for:
+    // - API routes (/api/*)
+    // - Static files (/_next/*)
+    // - Files with extensions (.jpg, .png, etc)
+    '/((?!api|_next/static|_next/image|images|favicon.ico|.*\\.).*)'
   ],
 } 

@@ -19,29 +19,27 @@ export default function LanguageSwitcher() {
     setCurrentLocale(localeSegment || i18n.defaultLocale);
   }, [pathname]);
 
+  // This function correctly handles language switching in all cases
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === currentLocale) return;
     
-    // Handle special case for default locale (English)
+    // Case 1: Switching from English to another language
     if (currentLocale === i18n.defaultLocale) {
-      // We're switching FROM English TO another language
-      if (newLocale !== i18n.defaultLocale) {
-        // Simply add the new locale before the current path
-        return router.push(`/${newLocale}${pathname}`);
-      }
-    } else {
-      // We're switching FROM a non-English language
-      // First, remove the language code from the path
-      const contentPath = pathname.replace(`/${currentLocale}`, '');
-      
-      if (newLocale === i18n.defaultLocale) {
-        // Switching to English
-        return router.push(contentPath || '/');
-      } else {
-        // Switching to another non-English language
-        return router.push(`/${newLocale}${contentPath}`);
-      }
+      // For English paths like /guides/xxx -> /es/guides/xxx
+      return router.push(`/${newLocale}${pathname}`);
+    } 
+    
+    // Case 2: Switching from a non-English language to English
+    if (newLocale === i18n.defaultLocale) {
+      // For paths like /es/guides/xxx -> /guides/xxx
+      const englishPath = pathname.replace(`/${currentLocale}`, '');
+      return router.push(englishPath || '/');
     }
+    
+    // Case 3: Switching between non-English languages (e.g., es -> fr)
+    // For paths like /es/guides/xxx -> /fr/guides/xxx
+    const contentPath = pathname.replace(`/${currentLocale}`, '');
+    return router.push(`/${newLocale}${contentPath}`);
   };
 
   return (
