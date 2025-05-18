@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import { getLocaleFromPath } from '../utils/routeUtils';
-import { locales } from '../i18n';
 
 const navItems = {
   en: [

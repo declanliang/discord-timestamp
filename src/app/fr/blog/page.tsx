@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const guides = [
   {
     title: 'Comment Utiliser les Horodatages Discord',
-    description: 'Un guide complet pour les débutants sur l\'utilisation de la fonction d\'horodatage dynamique de Discord.',
+    description: 'Un guide complet pour les débutants sur l&apos;utilisation de la fonction d&apos;horodatage dynamique de Discord.',
     slug: '/fr/guides/how-to-use-discord-timestamps',
     date: '12 mai 2024',
   },
@@ -69,15 +69,15 @@ export default function BlogPage() {
       </div>
       
       <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-semibold mb-6 leading-relaxed">Vous Cherchez Notre Générateur d'Horodatage?</h2>
+        <h2 className="text-3xl font-semibold mb-6 leading-relaxed">Vous Cherchez Notre Générateur d&apos;Horodatage?</h2>
         <p className="text-lg mb-6 leading-relaxed">
-          Retournez à notre page d'accueil pour utiliser notre outil générateur d'horodatages Discord et créer des horodatages pour votre serveur.
+          Retournez à notre page d&apos;accueil pour utiliser notre outil générateur d&apos;horodatages Discord et créer des horodatages pour votre serveur.
         </p>
         <Link 
           href="/fr"
           className="inline-block px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg"
         >
-          Aller au Générateur d'Horodatage
+          Aller au Générateur d&apos;Horodatage
         </Link>
       </div>
     </div>
