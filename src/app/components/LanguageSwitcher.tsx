@@ -26,21 +26,30 @@ export default function LanguageSwitcher() {
     let newPath = '';
     const pathSegments = pathname.split('/').filter(segment => segment);
     
-    // Remove current locale from path segments if it exists
-    const contentPathSegments = pathSegments.filter(segment => 
-      !i18n.locales.includes(segment)
+    // Check if the current path is already using a locale path
+    const currentLocaleIndex = pathSegments.findIndex(segment => 
+      i18n.locales.includes(segment)
     );
     
+    // Extract content path segments (excluding locale)
+    let contentPathSegments;
+    if (currentLocaleIndex !== -1) {
+      // Current path has a locale, remove it to get content segments
+      contentPathSegments = [...pathSegments];
+      contentPathSegments.splice(currentLocaleIndex, 1);
+    } else {
+      // Default locale (English) path doesn't have a locale prefix
+      contentPathSegments = pathSegments;
+    }
+    
     if (newLocale === i18n.defaultLocale) {
-      // For default locale, use content path without locale prefix
-      newPath = contentPathSegments.length > 0 
-        ? `/${contentPathSegments.join('/')}` 
+      // For English (default locale), use path without locale prefix
+      newPath = contentPathSegments.length > 0
+        ? `/${contentPathSegments.join('/')}`
         : '/';
     } else {
-      // For other locales, add locale prefix to content path
-      newPath = contentPathSegments.length > 0
-        ? `/${newLocale}/${contentPathSegments.join('/')}`
-        : `/${newLocale}`;
+      // For other locales, add the locale prefix
+      newPath = `/${newLocale}${contentPathSegments.length > 0 ? '/' + contentPathSegments.join('/') : ''}`;
     }
     
     router.push(newPath);
