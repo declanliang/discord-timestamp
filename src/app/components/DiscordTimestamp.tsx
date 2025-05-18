@@ -30,56 +30,49 @@ const DiscordTimestamp = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto p-6 space-y-8">
-        <header className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-800">{t.title}</h1>
-          <p className="text-gray-600">{t.description}</p>
-        </header>
-        
-        <div className="bg-white rounded-lg shadow-sm p-6 space-y-6">
-          <DateTimePickerWithFormat 
-            value={selectedDate}
-            onChange={handleDateChange}
-            onApply={handleApply}
-          />
+    <div className="space-y-10">
+      <div className="bg-white rounded-lg shadow-md p-8 space-y-8">
+        <DateTimePickerWithFormat 
+          value={selectedDate}
+          onChange={handleDateChange}
+          onApply={handleApply}
+        />
 
-          {showTimestamp && (
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-800">{t.availableFormats}</h2>
-              <div className="grid gap-4">
-                {Object.entries(t.timeFormats).map(([key, format]) => (
-                  <div key={key} 
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div className="space-y-1">
-                      <p className="font-medium text-gray-800">{format.description}</p>
-                      <code className="text-sm text-gray-600 bg-gray-200 px-2 py-1 rounded">{`<t:${timestamp}:${key}>`}</code>
-                      <p className="text-sm text-gray-500">Displays as: {format.example}</p>
-                    </div>
-                    <button
-                      onClick={() => copyToClipboard(key)}
-                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
-                      aria-label={`Copy ${format.description} format`}
-                    >
-                      {t.copy}
-                    </button>
+        {showTimestamp && (
+          <div className="space-y-8 mt-10">
+            <h2 className="text-3xl font-semibold text-gray-800 leading-relaxed">{t.availableFormats}</h2>
+            <div className="grid gap-6">
+              {Object.entries(t.timeFormats).map(([key, format]) => (
+                <div key={key} 
+                  className="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="space-y-3">
+                    <p className="font-medium text-2xl text-gray-800 leading-relaxed">{format.description}</p>
+                    <code className="text-xl text-gray-600 bg-gray-200 px-4 py-2 rounded leading-relaxed">{`<t:${timestamp}:${key}>`}</code>
+                    <p className="text-xl text-gray-500 leading-relaxed">Displays as: {format.example}</p>
                   </div>
-                ))}
-              </div>
+                  <button
+                    onClick={() => copyToClipboard(key)}
+                    className="px-8 py-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors text-xl"
+                    aria-label={`Copy ${format.description} format`}
+                  >
+                    {t.copy}
+                  </button>
+                </div>
+              ))}
             </div>
-          )}
-        </div>
-
-        <section className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">{t.howToUse}</h2>
-          <ol className="space-y-2 text-gray-700">
-            {t.howToUseSteps.map((step, index) => (
-              <li key={index}>{`${index + 1}. ${step}`}</li>
-            ))}
-          </ol>
-        </section>
+          </div>
+        )}
       </div>
-    </main>
+
+      <section className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6 leading-relaxed">{t.howToUse}</h2>
+        <ol className="space-y-4 text-xl text-gray-700 list-decimal pl-6">
+          {t.howToUseSteps.map((step, index) => (
+            <li key={index} className="pl-2 leading-relaxed">{step}</li>
+          ))}
+        </ol>
+      </section>
+    </div>
   );
 };
 

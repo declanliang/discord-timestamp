@@ -31,48 +31,51 @@ const guides = [
 
 export default function BlogPage() {
   return (
-    <div className="space-y-8">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold mb-4">Discord Zeitstempel Blog</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    <div className="max-w-5xl mx-auto space-y-10">
+      <div className="bg-white rounded-lg shadow-md p-8">
+        <h1 className="text-5xl font-bold mb-6 text-center leading-relaxed text-gray-800">Discord Zeitstempel Blog</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
           Entdecken Sie unsere Anleitungen und Tutorials, um Discord-Zeitstempel zu beherrschen und die Kommunikation auf Ihrem Server zu verbessern.
         </p>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {guides.map((guide) => (
-          <Link 
-            key={guide.slug} 
-            href={guide.slug}
-            className="block group"
-          >
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-blue-300">
-              <div className="p-6 space-y-4">
-                <p className="text-sm text-gray-500">{guide.date}</p>
-                <h2 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">{guide.title}</h2>
-                <p className="text-gray-600">{guide.description}</p>
-                <div className="pt-2">
-                  <span className="inline-flex items-center text-blue-600 text-sm font-medium">
-                    Weiterlesen
-                    <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </span>
+      <div className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-semibold mb-8 leading-relaxed">Aktuelle Anleitungen</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {guides.map((guide) => (
+            <Link 
+              key={guide.slug} 
+              href={guide.slug}
+              className="block group"
+            >
+              <div className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 transition-all duration-200 hover:shadow-lg hover:border-blue-300 h-full">
+                <div className="p-6 space-y-4">
+                  <p className="text-base text-gray-500 leading-relaxed">{guide.date}</p>
+                  <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors leading-relaxed">{guide.title}</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">{guide.description}</p>
+                  <div className="pt-3">
+                    <span className="inline-flex items-center text-blue-600 text-base font-medium">
+                      Weiterlesen
+                      <svg className="ml-2 w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
       
-      <div className="bg-blue-50 rounded-lg p-6 border border-blue-100 mt-8">
-        <h2 className="text-xl font-semibold mb-3">Suchen Sie unseren Zeitstempel-Generator?</h2>
-        <p className="mb-4">
+      <div className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-semibold mb-6 leading-relaxed">Suchen Sie unseren Zeitstempel-Generator?</h2>
+        <p className="text-lg mb-6 leading-relaxed">
           Kehren Sie zu unserer Startseite zurück, um unser Discord-Zeitstempel-Generator-Tool zu verwenden und Zeitstempel für Ihren Server zu erstellen.
         </p>
         <Link 
           href="/de"
-          className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+          className="inline-block px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg"
         >
           Zum Zeitstempel-Generator
         </Link>

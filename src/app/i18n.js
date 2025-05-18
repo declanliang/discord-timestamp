@@ -24,9 +24,7 @@ export const locales = {
       'Select your desired date using the date picker',
       'Choose the time and select 12h or 24h format',
       'Use mouse wheel over hours/minutes to adjust values',
-      'Click "Confirm" to set the time',
-      'Click "Apply" to generate timestamps',
-      'Copy your preferred format and paste it into Discord'
+      'Click "Confirm" to set the time and "Apply" to generate timestamps to copy'
     ],
     timeFormats: {
       t: { description: 'Short Time', example: '16:20' },
@@ -52,9 +50,7 @@ export const locales = {
       'Selecciona la fecha deseada usando el selector de fecha',
       'Elige la hora y selecciona el formato de 12h o 24h',
       'Usa la rueda del ratón sobre horas/minutos para ajustar valores',
-      'Haz clic en "Confirmar" para establecer la hora',
-      'Haz clic en "Aplicar" para generar marcas de tiempo',
-      'Copia tu formato preferido y pégalo en Discord'
+      'Haz clic en "Confirmar" para establecer la hora y en "Aplicar" para generar y copiar marcas de tiempo'
     ],
     timeFormats: {
       t: { description: 'Hora Corta', example: '16:20' },
@@ -80,9 +76,7 @@ export const locales = {
       'Sélectionnez la date souhaitée à l\'aide du sélecteur de date',
       'Choisissez l\'heure et sélectionnez le format 12h ou 24h',
       'Utilisez la molette de la souris sur les heures/minutes pour ajuster les valeurs',
-      'Cliquez sur "Confirmer" pour définir l\'heure',
-      'Cliquez sur "Appliquer" pour générer les timestamps',
-      'Copiez votre format préféré et collez-le dans Discord'
+      'Cliquez sur "Confirmer" pour définir l\'heure et sur "Appliquer" pour générer et copier les timestamps'
     ],
     timeFormats: {
       t: { description: 'Heure Courte', example: '16:20' },
@@ -108,9 +102,7 @@ export const locales = {
       'Wählen Sie das gewünschte Datum mit dem Datumsauswähler',
       'Wählen Sie die Uhrzeit und das 12- oder 24-Stunden-Format',
       'Verwenden Sie das Mausrad über Stunden/Minuten, um Werte anzupassen',
-      'Klicken Sie auf "Bestätigen", um die Zeit festzulegen',
-      'Klicken Sie auf "Anwenden", um Zeitstempel zu generieren',
-      'Kopieren Sie Ihr bevorzugtes Format und fügen Sie es in Discord ein'
+      'Klicken Sie auf "Bestätigen", um die Zeit festzulegen und auf "Anwenden", um Zeitstempel zu generieren und zu kopieren'
     ],
     timeFormats: {
       t: { description: 'Kurze Zeit', example: '16:20' },
