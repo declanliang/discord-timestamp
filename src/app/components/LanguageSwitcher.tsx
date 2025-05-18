@@ -21,9 +21,6 @@ export default function LanguageSwitcher() {
 
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === currentLocale) return;
-
-    // Get the current path segments
-    const pathSegments = pathname.split('/').filter(segment => segment);
     
     // Handle special case for default locale (English)
     if (currentLocale === i18n.defaultLocale) {
