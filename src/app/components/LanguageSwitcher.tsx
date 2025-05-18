@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { i18n, locales } from '../i18n';
 import { useEffect, useState } from 'react';
+import { getLocalizedPath, getLocaleFromPath } from '../utils/routeUtils';
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
@@ -10,36 +11,22 @@ export default function LanguageSwitcher() {
   const [currentLocale, setCurrentLocale] = useState('en');
 
   useEffect(() => {
-    // Extract current locale from URL
-    const pathSegments = pathname.split('/').filter(segment => segment);
-    const localeSegment = pathSegments.find(segment => 
-      i18n.locales.includes(segment)
-    );
-    
-    setCurrentLocale(localeSegment || i18n.defaultLocale);
+    // Extract current locale from URL using our utility function
+    setCurrentLocale(getLocaleFromPath(pathname));
   }, [pathname]);
 
-  // This function correctly handles language switching in all cases
   const handleLocaleChange = (newLocale: string) => {
     if (newLocale === currentLocale) return;
+
+    // Generate the new path using our utility function
+    const newPath = getLocalizedPath(newLocale, pathname);
     
-    // Case 1: Switching from English to another language
-    if (currentLocale === i18n.defaultLocale) {
-      // For English paths like /guides/xxx -> /es/guides/xxx
-      return router.push(`/${newLocale}${pathname}`);
-    } 
+    // Log for debugging
+    console.log(`Switching from ${currentLocale} to ${newLocale}`);
+    console.log(`Path changing from ${pathname} to ${newPath}`);
     
-    // Case 2: Switching from a non-English language to English
-    if (newLocale === i18n.defaultLocale) {
-      // For paths like /es/guides/xxx -> /guides/xxx
-      const englishPath = pathname.replace(`/${currentLocale}`, '');
-      return router.push(englishPath || '/');
-    }
-    
-    // Case 3: Switching between non-English languages (e.g., es -> fr)
-    // For paths like /es/guides/xxx -> /fr/guides/xxx
-    const contentPath = pathname.replace(`/${currentLocale}`, '');
-    return router.push(`/${newLocale}${contentPath}`);
+    // Navigate to the new path
+    router.push(newPath);
   };
 
   return (
