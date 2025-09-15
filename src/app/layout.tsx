@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Convert your local time into Discord timestamp format that automatically adjusts to each user\'s timezone.',
   keywords: 'Discord timestamp, time format, Discord time, timezone converter, Discord event planning',
   other: {
-    'partnerboostverifycode': '32dc01246faccb7f5b3cad5016dd5033'
+    'partnerboostverifycode': '32dc01246faccb7f5b3cad5016dd5033',
+    'verify-yeahpromos': '29af45e32c02'
   }
 }
 
