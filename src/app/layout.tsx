@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   keywords: 'Discord timestamp, time format, Discord time, timezone converter, Discord event planning',
   other: {
     'partnerboostverifycode': '32dc01246faccb7f5b3cad5016dd5033',
-    'verify-yeahpromos': '29af45e32c02'
+    'verify-yeahpromos': '29af45e32c02',
+    'impact-site-verification': '057d91c7-b283-44cc-aa8e-a35612537639'
   }
 }
 
